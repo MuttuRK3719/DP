@@ -13,3 +13,25 @@
             right = frogJump(h, dp, index - 2) + Math.abs(h[index] - h[index - 2]);
         return dp[index] = Math.min(left, right);
     }
+      public static int tabulationMethod(int[] heights) {
+        int[] dp = new int[heights.length];
+        for (int i = 1; i < heights.length; i++) {
+            int fs = dp[i - 1] + Math.abs(heights[i] - heights[i - 1]);
+            int ss = Integer.MAX_VALUE;
+            if (i > 1) ss = dp[i - 2] + Math.abs(heights[i] - heights[i - 2]);
+            dp[i] = Math.min(fs, ss);
+        }
+        return dp[dp.length - 1];
+    }
+    public static int spaceOptimization(int []heights){
+        int prev1=0;
+        int prev2=0;
+        for (int i = 1; i < heights.length; i++) {
+            int fs=prev1+Math.abs(heights[i]-heights[i-1]);
+            int ss=Integer.MAX_VALUE;
+            if(i>1) ss=prev2+Math.abs(heights[i]-heights[i-2]);
+            prev2=prev1;
+            prev1=Math.min(fs,ss);
+        }
+        return prev1;
+    }
