@@ -1,4 +1,6 @@
- public int numDecodings(String s) {
+https://leetcode.com/problems/decode-ways/
+
+public int numDecodings(String s) {
         int prev1 = 1, prev2 = 1;
         if (s.charAt(0) == '0')
             return 0;
