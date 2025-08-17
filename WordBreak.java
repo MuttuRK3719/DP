@@ -1,4 +1,4 @@
-
+https://leetcode.com/problems/word-break/
 public boolean wordBreak(String s, List<String> wordDict) {
      boolean []dp=new boolean[s.length()+1];
      HashSet<String> words=new HashSet<>(wordDict);
