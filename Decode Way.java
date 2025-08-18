@@ -1,5 +1,15 @@
 https://leetcode.com/problems/decode-ways/
+"1" -> 'A'
+"25" -> 'Y'
+"26" -> 'Z'
+        Input: s = "226"
+        Output: 3
 
+Explanation:
+
+"226" could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
+
+        
 public int numDecodings(String s) {
         int prev1 = 1, prev2 = 1;
         if (s.charAt(0) == '0')
