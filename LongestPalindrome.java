@@ -1,3 +1,13 @@
+Example 1:
+
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+Example 2:
+
+Input: s = "cbbd"
+Output: "bb"
+
 public String longestPalindrome(String s) {
         int right = 0, left = 0;
         for (int i = 0; i < s.length(); i++) {
