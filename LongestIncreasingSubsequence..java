@@ -25,3 +25,34 @@ public int lengthOfLIS(int[] nums) {
         }
         return max;
     }
+
+
+ public int lengthOfLIS(int[] nums) {
+        if(nums.length==0) return 0;
+        List<Integer> sub = new ArrayList<>();
+        sub.add(nums[0]);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > sub.get(sub.size() - 1)) {
+                sub.add(nums[i]);
+            } else {
+                int j = binarySearch(sub, nums[i]);
+                sub.set(j, nums[i]);
+            }
+        }
+        return sub.size();
+    }
+
+    int binarySearch(List<Integer> list, int val) {
+        int start = 0,end = list.size() - 1;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (list.get(mid) == val)
+                return mid;
+            else if (list.get(mid) > val) {
+                end = mid;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return start;
+    }
