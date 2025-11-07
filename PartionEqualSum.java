@@ -49,3 +49,25 @@ int sum =0;
         }
         return false;
     }
+
+
+bool canPartition(vector<int>& nums) {
+        int totalSum=0;
+        for(int i: nums)totalSum+=i;
+        if(totalSum%2)return false;
+        int n=nums.size();
+        int target=totalSum/2;
+        vector<vector<int>> dp(n,vector<int>(target+1,-1));
+        return canPartition(n-1,target,nums,dp);
+    }
+    bool canPartition(int index,int target,vector<int>&nums,vector<vector<int>>&dp){
+        if(target==0) return true;
+        if(index==0) return target==0;
+        if(dp[index][target]!=-1) return dp[index][target];
+        bool isNotTaken=canPartition(index-1,target,nums,dp);
+        bool isTaken=false;
+        if(target>=nums[index]){
+           isTaken= canPartition(index-1,target-nums[index],nums,dp);
+        }
+        return dp[index][target]=(isTaken||isNotTaken);
+    }
