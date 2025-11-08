@@ -31,3 +31,5 @@ int minimumDifference1(vector<int>& nums) {
         }
         return dp[index][sum] = take || notTake;
     }
+
+
