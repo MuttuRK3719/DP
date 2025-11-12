@@ -33,3 +33,21 @@ int numDistinct(string s, string t) {
         return (int)dp[m][n];
         // return findRes(s, t, m - 1, n - 1, dp);
     }
+
+int distinctSubsequences(string &str, string &sub)
+{
+	// Write your code here.
+	int m=str.size(),n=sub.size();
+	vector<int>prev(n+1),curr(n+1);
+	prev[0]=curr[0]=1;
+	for(int i=1;i<=m;i++){
+		for(int j=1;j<=n;j++){
+			if(str[i-1]==sub[j-1]){
+				curr[j]=prev[j-1]+prev[j];
+			}
+			else curr[j]=prev[j];
+		}
+		prev=curr;
+	}
+	return prev[n];
+}
